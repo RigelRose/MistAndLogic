@@ -1,0 +1,4 @@
+-- SELECT
+-- 	'FirstAcquisitionPosted'||'-'||"o_custom_ANLB"."ID" AS "ID",
+-- 	CAST("o_custom_ANLB"."CREATED ON" AS TIMESTAMP) AS "Time"
+-- FROM "o_custom_ANLB"
