@@ -1,0 +1,1674 @@
+select * from t_o_celonis_Vendor where Vendor_ID = 'Vendor_40020065'
+
+
+select * from <%=BUSINESS_GRAPH%>."t_o_celonis_Vendor" where id = 'Vendor_400800'
+
+select * from <%=BUSINESS_GRAPH%>."t_o_celonis_VendorAccountDebitItem" where id like '%4009629%'
+
+
+select bukrs,gjahr,count(distinct bukrs||belnr||gjahr) from bseg where augdt is null
+
+group by 1,2 order by 3 desc
+
+select count(distinct bukrs) from bseg where augdt is null
+
+
+TABLE IF EXISTS BSEG
+
+
+select count(zbd1t,zbd2t,zbd3t,* from bseg where zbd1t = 0
+
+order by 1 desc 
+
+select count(*),zbd1t from bseg group by 2
+
+table if exists "TCURF"
+
+
+
+SELECT 'CreateSalesOrderHeader' || '_' || "SalesOrder"."ID" AS "ID",
+       "SalesOrder"."ID"                                    AS "SalesOrder",
+       "SalesOrder"."CreationTime"                          AS "Time",
+       "SalesOrder"."CreatedBy_ID"                          AS "ExecutedBy",
+       "SalesOrder"."CreationExecutionType"                 AS "ExecutionType"
+FROM <%=BUSINESS_GRAPH%>."o_celonis_SalesOrder" AS "SalesOrder"
+WHERE "SalesOrder"."CreationTime" IS NOT NULL
+
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_SalesOrder"
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_Customer"
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_SalesOrderItem"
+
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_SalesOrderitem" where <%=BUSINESS_GRAPH%>."o_celonis_SalesOrderitem"."ID" = 'SalesOrderItem_400180910'
+'SalesOrderItem_400181410'
+
+MaterialMasterPlant_4008646712650F0618
+MaterialMasterPlant_400TESTCY123K901
+select * from <%=BUSINESS_GRAPH%>."o_celonis_MaterialMasterPlant" where <%=BUSINESS_GRAPH%>."o_celonis_MaterialMasterPlant"."ID" = 'MaterialMasterPlant_400TESTCY123K901'
+
+'MaterialMasterPlant_4008646712650F0618'
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_PurchaseOrderItem" where <%=BUSINESS_GRAPH%>."o_celonis_PurchaseOrderItem"."MaterialMasterPlant_ID"
+= 'MaterialMasterPlant_400TESTCY123K901'
+= 'MaterialMasterPlant_4008646712650F0618'
+"VBAP"."MANDT" || "VBAP"."MATNR" || "VBAP"."WERKS"
+
+select count( distinct "o_celonis_SalesOrderitem".ID) from <%=BUSINESS_GRAPH%>."o_celonis_SalesOrderitem" 
+inner join <%=BUSINESS_GRAPH%>."o_celonis_MaterialMasterPlant" on 1=1 
+and "o_celonis_SalesOrderitem"."MaterialMasterPlant_ID" = "o_celonis_MaterialMasterPlant"."ID"
+inner join <%=BUSINESS_GRAPH%>."o_celonis_PurchaseOrderItem" on 1=1 
+and "o_celonis_PurchaseOrderItem"."MaterialMasterPlant_ID" = "o_celonis_MaterialMasterPlant"."ID"
+
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_PurchaseOrderScheduleLine"
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_PurchaseOrderItem" where <%=BUSINESS_GRAPH%>."o_celonis_PurchaseOrderItem"."ID" = 'PurchaseOrderItem_400100110'
+
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_PurchaseOrderItem"
+select * from eket
+
+select * from ekpo 
+inner join eket 
+on 1=1 
+and ekpo.mandt = eket.mandt 
+and ekpo.ebeln = eket.ebeln
+and ekpo.ebelp = eket.ebelp
+
+
+
+select LPAD(CAST(EBELP AS VARCHAR), 5, '0'),ebelp from eket where ebelp = '401'
+order by 2 desc
+
+select distinct ebelp from eket order by ebelp desc
+
+select mandt,* from likp
+
+alter table likp add column mandt varchar(80)
+
+update "LIKP"
+set mandt = '400'
+where 1=1
+
+
+SELECT LFDAT,CAST("LIKP"."LFDAT" AS TIMESTAMP),* FROM LIKP WHERE VBELN = '80283655'
+
+Delivery_40080283655
+
+SELECT VGBEL,VGPOS,* FROM LIPS WHERE VBELN = '85000001'
+
+'5000003'
+
+SELECT * FROM VBAK WHERE VBELN = '2007'
+
+SELECT * FROM VBUK WHERE VBELN = '5000003'
+
+SalesOrder_4005000003
+SalesOrder_4002008
+SalesOrder_4002007
+SalesOrder_4002008
+
+Delivery_40085000001
+
+SELECT * FROM <%=BUSINESS_GRAPH%>."o_celonis_SalesOrder" WHERE ID = 'SalesOrder_4005000003'
+
+UPDATE LIKP 
+SET LFDAT = '2024-01-08 00:00:00'
+WHERE VBELN = '80283655'
+
+
+UPDATE VBAK 
+SET ERDAT = '2023-12-06 00:00:00'
+WHERE VBELN = '2007'
+
+
+select augdt,count(distinct belnr||buzei) from bseg where koart = 'D' group by 1 order by 1 
+
+select count(*)from bseg where koart = 'D' and augdt is not null
+group by 2 order by 2
+
+ALTER TABLE BSEG ADD COLUMN AUGDT_OLD DATETIME
+
+UPDATE BSEG 
+SET AUGDT_OLD = AUGDT 
+WHERE 1=1
+
+UPDATE BSEG 
+SET AUGDT = AUGDT + INTERVAL '1 day' *
+   CASE
+       WHEN RANDOM() < 0.2 THEN 30   -- 20% of selected rows get 30 days
+       WHEN RANDOM() < 0.35 THEN 45  -- 15% get 45 days
+       WHEN RANDOM() < 0.55 THEN 60  -- 20% get 60 days
+       WHEN RANDOM() < 0.80 THEN 90  -- 25% get 90 days
+       ELSE 120                      -- 20% get 120 days
+   END
+   where koart = 'D' and augdt is not null
+
+SELECT AUGDT, AUGDT + INTERVAL '1 day' *
+   CASE
+       WHEN RANDOM() < 0.2 THEN 30   -- 20% of selected rows get 30 days
+       WHEN RANDOM() < 0.35 THEN 45  -- 15% get 45 days
+       WHEN RANDOM() < 0.55 THEN 60  -- 20% get 60 days
+       WHEN RANDOM() < 0.80 THEN 90  -- 25% get 90 days
+       ELSE 120                      -- 20% get 120 days
+   END AS AUGDT_NEW FROM BSEG where koart = 'D' and augdt is not null
+
+
+   SELECT COUNT(*) FROM BSEG where koart = 'D' and augdt is not null AND AUGDT != AUGDT_OLD
+
+
+
+
+SELECT "BSEG"."MANDT", "BSEG"."BUKRS", "BSEG"."AUGBL", "BSEG"."AUGGJ", "BSEG"."AUGDT"
+                               FROM "BSEG" AS "BSEG"
+                               WHERE "BSEG"."KOART" = 'D'
+                                 AND "BSEG"."AUGBL" IS NOT NULL
+
+
+
+WITH "CTE_ClearingPointer" AS (SELECT DISTINCT "BSEG"."MANDT", "BSEG"."BUKRS", "BSEG"."AUGBL", "BSEG"."AUGGJ", "BSEG"."AUGDT"
+                               FROM "BSEG" AS "BSEG"
+                               WHERE "BSEG"."KOART" = 'D'
+                                 AND "BSEG"."AUGBL" IS NOT NULL)
+SELECT COALESCE('CustomerAccountClearingAssignment_' || "BKPF_PAY"."MANDT" || "BKPF_PAY"."BUKRS"
+                || "BKPF_PAY"."BELNR"
+                || "BKPF_PAY"."GJAHR",
+                'CustomerAccountClearingAssignment_' || "ClearingPointer"."MANDT" || "ClearingPointer"."BUKRS"
+                || "ClearingPointer"."AUGBL" || "ClearingPointer"."AUGGJ")     AS "ID",
+       CASE
+           WHEN "BKPF_PAY"."MANDT" IS NOT NULL
+               THEN TIMESTAMPADD(MILLISECOND, 1, CAST("BKPF_PAY"."CPUDT" AS DATE) + CAST(TIMESTAMPDIFF(SECOND, CAST("BKPF_PAY"."CPUTM" AS DATE),
+                    "BKPF_PAY"."CPUTM") AS INTERVAL SECOND))
+           ELSE CAST(CONCAT(CAST("ClearingPointer"."AUGDT" AS VARCHAR), '23:59:59') AS TIMESTAMP)
+           END                                                                 AS "CreationTime",
+	 'User_' || "BKPF_PAY"."MANDT" || "BKPF_PAY"."USNAM"     AS "CreatedBy",
+       CASE
+           WHEN "USR02"."USTYP" IN ('B', 'C') THEN 'Automatic'
+           ELSE 'Manual' END                                                   AS "CreationExecutionType",
+       'SAP'                                                                   AS "SourceSystemType",
+	 COALESCE("BKPF_PAY"."MANDT", "ClearingPointer"."MANDT") AS "SourceSystemInstance"
+WITH "CTE_ClearingPointer" AS (SELECT --DISTINCT "BSEG"."MANDT", "BSEG"."BUKRS", "BSEG"."AUGBL", "BSEG"."AUGGJ", "BSEG"."AUGDT"
+                                COUNT("BSEG"."MANDT"||"BSEG"."BUKRS"||"BSEG"."AUGBL"||"BSEG"."AUGGJ"||"BSEG"."AUGDT"),
+                                "BSEG"."MANDT"||"BSEG"."BUKRS"||"BSEG"."AUGBL"||"BSEG"."AUGGJ"||"BSEG"."AUGDT"
+                               FROM "BSEG" AS "BSEG"
+                               WHERE "BSEG"."KOART" = 'D' AND "BSEG"."AUGBL" IS NOT NULL
+                               GROUP BY 2 ORDER BY 1 DESC
+                                 L)
+SELECT COUNT("ClearingPointer"."MANDT" || "ClearingPointer"."BUKRS"
+                || "ClearingPointer"."AUGBL" || "ClearingPointer"."AUGGJ"), "ClearingPointer"."MANDT" || "ClearingPointer"."BUKRS"
+                || "ClearingPointer"."AUGBL" || "ClearingPointer"."AUGGJ"
+FROM "CTE_ClearingPointer" AS "ClearingPointer" GROUP BY 2 ORDER BY 1 DESC
+         LEFT JOIN "BKPF" AS "BKPF_PAY"
+                   ON "ClearingPointer"."MANDT" = "BKPF_PAY"."MANDT"
+                       AND "ClearingPointer"."BUKRS" = "BKPF_PAY"."BUKRS"
+                       AND "ClearingPointer"."AUGBL" = "BKPF_PAY"."BELNR"
+                       AND "ClearingPointer"."AUGGJ" = "BKPF_PAY"."GJAHR"
+         LEFT JOIN "USR02" AS "USR02"
+                   ON "BKPF_PAY"."MANDT" = "USR02"."MANDT"
+                       AND "BKPF_PAY"."USNAM" = "USR02"."BNAME"
+WHERE "ClearingPointer"."AUGBL" IS NOT NULL
+
+
+SELECT AUGDT,AUGDT_OLD,* FROM BSEG WHERE "BSEG"."MANDT"||"BSEG"."BUKRS"||"BSEG"."AUGBL"||"BSEG"."AUGGJ" = '400340020210100002021'
+
+ALTER TABLE BSEG ALTER COLUMN AUGDT SET NULL 
+
+
+UPDATE BSEG SET AUGDT = NULL
+WHERE 1=1
+;
+
+CREATE TABLE BSEG_AUGDT AS 
+SELECT MANDT,BUKRS,BELNR,GJAHR,BUZEI,AUGDT_OLD FROM BSEG 
+
+ALTER TABLE BSEG_AUGDT ADD COLUMN AUGDT DATETIME 
+
+UPDATE BSEG_AUGDT 
+SET AUGDT = AUGDT_OLD + INTERVAL '1 day' *
+   CASE
+       WHEN RANDOM() < 0.2 THEN 30   -- 20% of selected rows get 30 days
+       WHEN RANDOM() < 0.35 THEN 45  -- 15% get 45 days
+       WHEN RANDOM() < 0.55 THEN 60  -- 20% get 60 days
+       WHEN RANDOM() < 0.80 THEN 90  -- 25% get 90 days
+       ELSE 120                      -- 20% get 120 days
+   END
+   WHERE AUGDT IS NOT NULL
+
+
+
+
+SELECT COUNT(MANDT||BUKRS||BELNR||GJAHR||BUZEI),MANDT||BUKRS||BELNR||GJAHR||BUZEI FROM BSEG
+GROUP BY 2 ORDER BY 1 DESC
+
+SELECT * FROM BSEG_AUGDT
+
+ALTER TABLE BSEG DROP COLUMN AUGDT CASCADE 
+
+SELECT refresh_projection('BSEG_super')
+
+CREATE TABLE BSEG_AUGDT_OLD 
+AS SELECT *,ROW_NUMBER() OVER (PARTITION BY MANDT,BUKRS,BELNR,GJAHR,BUZEI) AS row_num FROM "BSEG"
+
+SELECT * FROM BSEG_AUGDT_OLD WHERE ROW_NUM > 1
+
+SELECT DISTINCT AUGDT FROM BSEG 
+
+SELECT COUNT(*) FROM BSEG WHERE koart = 'D' and augdt_OLD is not null
+
+
+UPDATE BSEG 
+SET AUGDT = BSEG_AUGDT.AUGDT 
+FROM BSEG_AUGDT 
+WHERE BSEG.MANDT = BSEG_AUGDT.MANDT 
+AND BSEG.BUKRS = BSEG_AUGDT.BUKRS 
+AND BSEG.BELNR = BSEG_AUGDT.BELNR 
+AND BSEG.GJAHR = BSEG_AUGDT.GJAHR 
+AND BSEG.BUZEI = BSEG_AUGDT.BUZEI
+
+select * from ekko where ebeln = '2300000000'
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_PurchaseOrder" where "ID" = 'PurchaseOrder_4002300000000'
+
+SELECT AUGDT,AUGDT_OLD FROM BSEG WHERE AUGDT IS NOT NULL
+
+
+SELECT AEDAT,* FROM EKKO WHERE EBELN = '2300000000'
+AEDAT - 2023-09-13 00:00:00,2023-10-17 00:00:00
+ERDAT - 2023-10-07 00:00:00
+SELECT ERDAT,* FROM VBAK WHERE VBELN = '311000006'
+
+SELECT AEDAT,* FROM EKKO WHERE EBELN = '2300000010'
+AEDAT - 2024-10-10 00:00:00 00:00:00, 2024-09-24 00:00:00
+ERDAT - 2024-09-09 00:00:00
+SELECT ERDAT,* FROM VBAK WHERE VBELN = '1905'
+
+SELECT AEDAT,* FROM EKKO WHERE EBELN = '5810000508'
+AEDAT - 2023-10-03 00:00:00	, 2024-05-22 00:00:00
+ERDAT - 2024-09-09 00:00:00
+SELECT ERDAT,* FROM VBAK WHERE VBELN in ('1333','1335','1337','1339','1340','1341','1342')
+
+SELECT AEDAT,* FROM EKKO WHERE EBELN = '5810000774'
+AEDAT - 2024-01-17 00:00:00	, 2025-08-04 00:00:00	
+ERDAT - 2025-07-23 00:00:00	
+SELECT ERDAT,* FROM VBAK WHERE VBELN IN ('7000000097')
+= '7000000246'
+in ('1333','1335','1337','1339','1340','1341','1342')
+
+PurchaseOrder_4005810000774
+SELECT AEDAT,* FROM EKKO WHERE EBELN = '5810001427'
+AEDAT - 2024-01-17 00:00:00	, 2025-08-04 00:00:00	
+ERDAT - 2025-07-23 00:00:00	
+SELECT ERDAT,* FROM VBAK WHERE VBELN IN ('7000000097')
+
+UPDATE EKKO 
+SET AEDAT = AEDAT + 15
+WHERE EBELN = '8600000194'
+
+UPDATE VBAK 
+SET ERDAT = ERDAT - 63
+WHERE VBELN in ('2045')
+
+SELECT * FROM VBAK WHERE VBELN = '2045'
+
+SalesOrder_4002032
+SalesOrder_4002033
+SalesOrder_4002045
+SalesOrder_4002046
+SalesOrder_4002047
+SalesOrder_4002048
+SalesOrder_4002049
+
+
+
+
+= '7000000131'
+
+IN ('7000000137',
+'7000000137',
+'7000000138',
+'7000000138',
+'7000000139',
+'7000000139',
+'7000000140',
+'7000000140',
+'7000000141',
+'7000000141',
+'7000000142',
+'7000000142',
+'7000000143',
+'7000000143'
+)
+
+'7000000210'
+IN ('7000000217','7000000218','7000000219','7000000220')
+in ('1298','1300','1301','1302','1303','1304','1305','1306','1307','1308','1309','1310','1311','1312','1313',
+'1314','1315','1317','1320','1322','1324')
+('1325','1326','1327','1332')
+('1333','1335','1337','1339','1340','1341','1342')
+('1344','1346','1347')
+('1360')
+('1440','1442','1445','1458')
+('1473','1474')
+
+('1568','1569','1570','1571','1574','1577')
+
+'1923'
+SalesOrder_4001905
+SalesOrder_4001906
+SalesOrder_4001923
+
+
+SalesOrder_4001568
+SalesOrder_4001569
+SalesOrder_4001570
+SalesOrder_4001571
+SalesOrder_4001574
+SalesOrder_4001577
+SalesOrder_4001473
+SalesOrder_4001474
+SalesOrder_4001440
+SalesOrder_4001442
+SalesOrder_4001445
+SalesOrder_4001458
+SalesOrder_4001360
+SalesOrder_4001344
+SalesOrder_4001346
+SalesOrder_4001347
+SalesOrder_4001333
+SalesOrder_4001335
+SalesOrder_4001337
+SalesOrder_4001339
+SalesOrder_4001340
+SalesOrder_4001341
+SalesOrder_4001342
+SalesOrder_4001325
+SalesOrder_4001326
+SalesOrder_4001327
+SalesOrder_4001332
+
+select * from ekko where ebeln = '2300000000'
+PurchaseOrder_4002300000018
+
+select matnr,werks,* from ekpo where ebeln = '2300000000'
+
+ '2300000000' -->130000
+
+select matnr,werks,* from vbap where vbeln = '311000006' -->130000
+
+select * from marc where matnr = '130000'
+
+select ebeln,ebelp,matnr,werks,* from ekpo  where matnr = '130000'
+
+SELECT * FROM VBAP WHERE matnr = '130000'
+
+SELECT COUNT(*),MATNR||WERKS FROM VBAP GROUP BY 2 ORDER BY 1 DESC
+
+SELECT AEDAT FROM EKKO WHERE EBELN = '8600000041'
+PurchaseOrder_4005810000774
+PurchaseOrder_4002300000000
+PurchaseOrder_4008600000161
+PurchaseOrder_4002300000010
+PurchaseOrder_4005810001427
+PurchaseOrder_4005810000508
+PurchaseOrder_4008600000194
+PurchaseOrder_4008600000041,
+
+
+SELECT CDHDR.OBJECTID,CDHDR.CHANGENR,CDHDR.OBJECTCLAS,CDHDR.UDATE
+FROM "CDPOS" AS "CDPOS"
+                                LEFT JOIN "CDHDR" AS "CDHDR"
+                                          ON "CDPOS"."MANDANT" = "CDHDR"."MANDANT"
+                                              AND "CDPOS"."CHANGENR" = "CDHDR"."CHANGENR"
+                                              AND "CDPOS"."OBJECTCLAS" = "CDHDR"."OBJECTCLAS"
+                                              AND "CDPOS"."OBJECTID" = "CDHDR"."OBJECTID"
+ WHERE TABKEY = '4008600000041'
+
+5810000774,293324,293325,293325,EINKBELEG
+
+UPDATE "CDHDR"
+SET UDATE = '2023-12-12 00:00:00'
+WHERE OBJECTID = '8600000041'
+AND CHANGENR IN ('76883','76884')
+AND OBJECTCLAS = 'EINKBELEG'
+
+
+
+SELECT * FROM 
+
+
+
+SalesOrder_4002032
+SalesOrder_4002033
+SalesOrder_4002045
+SalesOrder_4002046
+SalesOrder_4002047
+SalesOrder_4002048
+SalesOrder_4002049
+
+
+SELECT distinct matnr,werks FROM VBAp WHERE VBELN IN ('7000000018',
+'7000000020',
+'7000000021',
+'7000000022',
+'7000000023',
+'7000000024',
+'7000000025',
+'7000000026',
+'7000000027',
+'7000000028',
+'7000000029',
+'7000000030',
+'7000000031',
+'7000000032',
+'7000000034',
+'7000000035',
+'7000000036',
+'7000000037',
+'7000000038',
+'7000000039',
+'7000000040',
+'7000000042',
+'7000000046',
+'7000000047',
+'7000000048',
+'7000000049',
+'7000000050',
+'7000000051',
+'7000000052',
+'7000000053',
+'7000000054',
+'7000000055',
+'7000000056',
+'7000000057',
+'7000000058',
+'7000000059',
+'7000000060',
+'7000000061',
+'7000000062',
+'7000000063',
+'7000000064',
+'7000000065',
+'7000000066',
+'7000000067',
+'7000000068',
+'7000000070',
+'7000000071',
+'7000000072',
+'7000000073',
+'7000000075',
+'7000000076',
+'7000000077',
+'7000000078',
+'7000000079',
+'7000000080',
+'7000000081',
+'7000000082',
+'7000000083',
+'7000000084',
+'7000000085',
+'7000000086',
+'7000000087',
+'7000000088',
+'7000000089',
+'7000000090',
+'7000000091',
+'7000000092',
+'7000000093',
+'7000000094',
+'7000000095',
+'7000000096',
+'7000000097',
+'7000000098',
+'7000000099',
+'7000000100',
+'7000000101',
+'7000000102',
+'7000000103',
+'7000000104',
+'7000000105',
+'7000000106',
+'7000000107',
+'7000000109',
+'7000000110',
+'7000000111',
+'7000000112',
+'7000000113',
+'7000000114',
+'7000000115',
+'7000000116',
+'7000000117',
+'7000000118',
+'7000000119',
+'7000000120',
+'7000000121',
+'7000000122',
+'7000000123',
+'7000000124',
+'7000000125',
+'7000000126',
+'7000000127',
+'7000000128',
+'7000000129',
+'7000000130',
+'7000000131',
+'7000000132',
+'7000000133',
+'7000000134',
+'7000000136',
+'7000000137',
+'7000000138',
+'7000000139',
+'7000000140',
+'7000000141',
+'7000000142',
+'7000000143',
+'7000000145',
+'7000000146',
+'7000000147',
+'7000000148',
+'7000000149',
+'7000000150',
+'7000000151',
+'7000000152',
+'7000000153',
+'7000000154',
+'7000000155',
+'7000000156',
+'7000000158',
+'7000000159',
+'7000000210',
+'7000000217',
+'7000000218',
+'7000000219',
+'7000000220',
+'7000000231',
+'7000000232',
+'7000000246',
+'7000000247',
+'311000006',
+'54',
+'55',
+'60000000',
+'60',
+'1905',
+'1906',
+'1923',
+'1928',
+'1952',
+'1967',
+'2032',
+'2033',
+'2045',
+'2046',
+'2047',
+'2048',
+'2049',
+'1440',
+'1442',
+'1445',
+'1458',
+'1473',
+'1474',
+'1556',
+'1559',
+'1568',
+'1569',
+'1570',
+'1571',
+'1574',
+'1577',
+'1663',
+'1664',
+'1665',
+'1666',
+'172',
+'1117',
+'1298',
+'1300',
+'1301',
+'1302',
+'1303',
+'1304',
+'1305',
+'1306',
+'1307',
+'1308',
+'1309',
+'1310',
+'1311',
+'1312',
+'1313',
+'1314',
+'1315',
+'1317',
+'1320',
+'1322',
+'1324',
+'1325',
+'1326',
+'1327',
+'1332',
+'1333',
+'1335',
+'1337',
+'1339',
+'1340',
+'1341',
+'1342',
+'1344',
+'1346',
+'1347',
+'1360',
+'1389',
+'1390',
+'1391',
+'1392',
+'1393',
+'1394',
+'1395')
+
+===========================================================================================
+select distinct ebeln from ekpo where matnr = '130003' and werks = 'IF04'
+
+select aedat,* from ekko where ebeln in ('2300000017',
+'9900000504',
+'9900000765',
+'2300000028',
+'9900000818',
+'9900000736',
+'9900000769',
+'9900000745',
+'9900000815',
+'9900000770',
+'2300000015',
+'9900000768',
+'9900000762')
+
+2024-10-10 00:00:00	
+2300000010
+update ekko 
+set aedat = '2024-10-10 00:00:00'
+where ebeln in ('2300000017',
+'9900000504',
+'9900000765',
+'2300000028',
+'9900000818',
+'9900000736',
+'9900000769',
+'9900000745',
+'9900000815',
+'9900000770',
+'2300000015',
+'9900000768',
+'9900000762')
+=========================================================================================
+
+select distinct ebeln from ekpo where matnr = 'FL0433' and werks = 'PU01'
+
+select aedat,* from ekko where ebeln in ('5810000806',
+'5810000839',
+'5810000833',
+'5810000775',
+'5810000815',
+'9900000113',
+'5810000835',
+'5810000817',
+'5810000811',
+'5810000826',
+'5810000810',
+'5810000825',
+'5810000801',
+'5810000834',
+'5810000816',
+'5810000812',
+'5810000796',
+'5810000809',
+'5810000790',
+'5810000836',
+'5810000830',
+'5810000797',
+'5810000791',
+'5810000837',
+'5810000831',
+'5810000813',
+'5810000788',
+'5810000828',
+'9900001301',
+'5810000814',
+'5810000789',
+'5810000783',
+'5810000829',
+'5810000823',
+'5810000792',
+'5810000805',
+'5810000832',
+'9900001317')
+
+2025-08-04 00:00:00
+
+update ekko 
+set aedat = '2025-08-04 00:00:00'
+where ebeln in ('5810000806',
+'5810000839',
+'5810000833',
+'5810000775',
+'5810000815',
+'9900000113',
+'5810000835',
+'5810000817',
+'5810000811',
+'5810000826',
+'5810000810',
+'5810000825',
+'5810000801',
+'5810000834',
+'5810000816',
+'5810000812',
+'5810000796',
+'5810000809',
+'5810000790',
+'5810000836',
+'5810000830',
+'5810000797',
+'5810000791',
+'5810000837',
+'5810000831',
+'5810000813',
+'5810000788',
+'5810000828',
+'9900001301',
+'5810000814',
+'5810000789',
+'5810000783',
+'5810000829',
+'5810000823',
+'5810000792',
+'5810000805',
+'5810000832',
+'9900001317')
+==================================================
+select distinct ebeln from ekpo where matnr = '100' and werks = 'IN01'
+
+SELECT AEDAT,* FROM EKKO WHERE EBELN = '8600000161'
+
+2023-08-24 00:00:00	
+
+UPDATE EKKO 
+SET AEDAT = '2023-08-24 00:00:00'
+WHERE EBELN IN ('4500000042',
+'4500000393',
+'9900000641',
+'4500000057',
+'4500000051',
+'6000000006',
+'4600000002',
+'5810000224',
+'5810000466',
+'8600000185',
+'4500000091',
+'4500000046',
+'8600000186',
+'8600000162',
+'5810000225',
+'4500000050',
+'9900000631',
+'6000000029',
+'8600000190',
+'5810000226',
+'8600000203',
+'5810000220',
+'5500000000',
+'5810000269',
+'8600000188',
+'5810000230',
+'8600000182',
+'8600000191',
+'5810000227',
+'8600000204',
+'5810000221',
+'4500000058',
+'6000000007',
+'9900000624',
+'9900000657',
+'9900001748',
+'9900000633',
+'4500000049',
+'4500000101',
+'9900000660',
+'8600000198',
+'8600000192',
+'5810000222',
+'8600000183',
+'5810000219',
+'4500000059',
+'4500000086',
+'4600000001',
+'8600000184',
+'5810000332',
+'5810000223',
+'4500000054',
+'4500000087',
+'6000000030',
+'4500000045',
+'9900000662')
+
+=================================================================================
+select distinct ebeln from ekpo where matnr = '517' and werks = 'IN01'
+
+SELECT AEDAT,* FROM EKKO WHERE EBELN = '8600000041'
+
+2023-12-12 00:00:00
+
+UPDATE EKKO 
+SET AEDAT = '2023-12-12 00:00:00'
+WHERE EBELN IN ('5810001302')
+
+===================================================================================
+
+select distinct ebeln from ekpo where matnr = '4600000962' and werks = 'P002'
+
+SELECT AEDAT,* FROM EKKO WHERE EBELN = '5810001427'
+
+2025-04-13 00:00:00	
+
+UPDATE EKKO 
+SET AEDAT = '2025-04-13 00:00:00'
+WHERE EBELN IN ('9900001472',
+'9900001473',
+'9900001547',
+'9900001474',
+'5810001428',
+'9900001270',
+'9900001471',
+'9900001271',
+'9900001268',
+'9900001559'
+)
+
+===================================================================
+
+select distinct ebeln from ekpo where matnr = '111613' and werks = 'EYA1'
+
+SELECT AEDAT,* FROM EKKO WHERE EBELN = '5810000508'
+
+2024-05-22 00:00:00
+
+UPDATE EKKO 
+SET AEDAT = '2024-05-22 00:00:00'
+WHERE EBELN IN ('5810000533',
+'5810000511',
+'5810001226',
+'5810001208',
+
+'5810000530',
+'5810001227',
+'5810001221',
+'5810000527',
+'5810000519',
+'5810001228',
+'5810000531',
+'5810001205'
+)
+================================================================
+
+
+select distinct ebeln from ekpo where matnr = '130000' and werks = 'IF04'
+
+SELECT AEDAT,* FROM EKKO WHERE EBELN = '2300000000'
+
+2023-10-17 00:00:00
+
+UPDATE EKKO 
+SET AEDAT = '2023-10-17 00:00:00'
+WHERE EBELN IN ('2300000001',
+'2300000016',
+'2300000003',
+'2300000018',
+'2300000002',
+'5810000430',
+'2300000013'
+)
+===========================================================================
+
+SELECT AEDAT, * FROM EKKO WHERE EBELN = '8600000103'
+
+UPDATE EKKO 
+SET AEDAT = AEDAT + 155
+WHERE EBELN = '8600000103'
+
+2021-06-28 00:00:00	
+'4500000210'
+
+select erdat,* from vbak where vbeln = '342'
+
+in ('344',
+'345',
+'346',
+'346',
+'348',
+'353',
+'358',
+'362',
+'363',
+'364')
+
+update vbak 
+set erdat = erdat + 51
+where vbeln = '135'
+
+in ('131','132')
+
+
+SalesOrder_400131
+SalesOrder_400132
+
+
+SalesOrder_400216
+SalesOrder_400217
+
+
+SalesOrder_400231
+SalesOrder_400232
+
+
+
+SalesOrder_400344
+SalesOrder_400345
+SalesOrder_400346
+SalesOrder_400346
+SalesOrder_400348
+SalesOrder_400353
+SalesOrder_400358
+SalesOrder_400362
+SalesOrder_400363
+SalesOrder_400364
+
+
+SalesOrder_400368
+SalesOrder_400376
+SalesOrder_400380
+SalesOrder_400382
+
+
+SalesOrder_400390
+SalesOrder_400391
+SalesOrder_400392
+SalesOrder_40060000024
+SalesOrder_400393
+
+
+SalesOrder_400399
+SalesOrder_400401
+SalesOrder_400405
+SalesOrder_400407
+
+
+SalesOrder_40079
+SalesOrder_40086
+SalesOrder_40090
+SalesOrder_40092
+SalesOrder_40094
+SalesOrder_40095
+SalesOrder_40095
+SalesOrder_40096
+SalesOrder_400103
+SalesOrder_400128
+SalesOrder_400134
+SalesOrder_400194
+
+
+
+SELECT * FROM EKKO ORDER BY AEDAT DESC
+
+SELECT * FROM EKKO WHERE EBELN IN ('9900001747',
+'9900001746',
+'9900001743',
+'9900001745',
+'9900001744',
+'5810000834',
+'5810000835',
+'5810000833',
+'9900001735',
+'5810000836',
+'5810000832',
+'9900001740',
+'9900001739',
+'5810000823',
+'5810000817',
+'5810000816',
+'5810000815',
+'5810000814',
+'5810000813',
+'5810000812',
+'5810000811',
+'5810000810',
+'5810000809',
+'5810000806',
+'5810000805',
+'5810000801',
+'5810000797',
+'5810000796',
+'5810000792',
+'5810000791',
+'5810000790',
+'5810000789',
+'5810000788',
+'5810000783',
+'5810000775',
+'5810000839',
+'9900000113',
+'9900001301',
+'9900001317',
+'9900001736',
+'9900001737',
+'9900001738',
+'9900001741',
+'5810000774',
+'9900001742',
+'5810000831',
+'5810000830',
+'5810000829',
+'5810000828',
+'5810000826')
+
+
+SELECT MANDT,VBELN,POSNR,MATNR,WERKS FROM VBAP WHERE MATNR IS NOT NULL AND WERKS IS NOT NULL
+
+SELECT VBELN FROM VBAP WHERE MATNR IS NOT NULL AND WERKS IS NOT NULL AND LENGTH(VBELN) = '10' 
+AND ERDAT >= '2024-01-01 00:00:00' AND ERDAT <= '2024-12-31 00:00:00'
+GROUP BY VBELN HAVING COUNT(POSNR) = 1;
+
+ORDER BY VBELN DESC ERDAT DESC LIMIT 50
+
+
+
+SELECT VBELN,ERDAT FROM VBAK WHERE VBELN IN ('7000000045',
+'7000000054',
+'7000000063',
+'7000000072',
+'7000000012',
+'7000000081',
+'7000000090',
+'7000000018',
+'7000000069',
+'7000000078',
+'7000000087',
+'7000000003',
+'7000000096',
+'7000000030',
+'7000000021',
+'7000000103',
+'7000000112',
+'7000000121',
+'7000000130',
+'7000000027',
+'7000000009',
+'7000000118',
+'7000000109',
+'7000000127',
+'7000000036',
+'7000000019',
+'7000000097',
+'7000000013',
+'7000000091',
+'7000000104',
+'7000000046',
+'7000000079',
+'7000000040',
+'7000000131',
+'7000000073',
+'7000000028',
+'7000000119',
+'7000000022',
+'7000000113',
+'7000000055',
+'7000000088',
+'7000000004',
+'7000000082',
+'7000000037',
+'7000000128',
+'7000000031',
+'7000000122',
+'7000000064',
+'7000000023',
+'7000000114',
+'7000000056',
+'7000000089',
+'7000000050',
+'7000000005',
+'7000000083'
+)
+
+/*
+SELECT EBELN FROM EKPO WHERE MATNR IS NOT NULL AND WERKS IS NOT NULL AND LENGTH(EBELN) = '10' 
+GROUP BY EBELN HAVING COUNT(EBELP) = 1
+
+1) you will get ebeln values. -->100
+2) you will also get distinct matnr and werks values. 
+3) update matnr and werks for the identified ebeln values. 100 
+
+1) you will get vbeln values. -->100
+2) you will also get distinct matnr and werks values. 
+3) update matnr and werks for the identified ebeln values. 100 */
+
+alter table ekpo rename matnr to MATNR_OLD_V1
+alter table ekpo rename WERKS to WERKS_OLD_V1
+
+alter table ekpo ADD COLUMN MATNR VARCHAR ;
+alter table ekpo ADD COLUMN WERKS VARCHAR 
+
+UPDATE EKPO 
+SET MATNR = MATNR_OLD_V1,
+WERKS = WERKS_OLD_V1
+
+
+SELECT * FROM VBAP 
+
+alter table VBAP rename matnr to MATNR_OLD_V1;
+alter table VBAP rename WERKS to WERKS_OLD_V1
+
+alter table VBAP ADD COLUMN MATNR VARCHAR ;
+alter table VBAP ADD COLUMN WERKS VARCHAR 
+
+UPDATE VBAP 
+SET MATNR = MATNR_OLD_V1,
+WERKS = WERKS_OLD_V1
+
+SELECT EBELN,AEDAT FROM EKKO 
+WHERE EBELN IN ('5810000184',
+'5810000566',
+'5810000048',
+'8600000161',
+'8600000025',
+'5810000933',
+'8000000021',
+'5810001242',
+'5810000715',
+'5810000139',
+'5810001184',
+'5810000851',
+'5810001048',
+'5810000333',
+'8600000116',
+'5810000793',
+'5810000657',
+'5810000599',
+'5810000042',
+'5810000424',
+'5810000224',
+'5810000806',
+'8600000194',
+'5810000884',
+'5810001151',
+'5810000748',
+'5810000560',
+'5810001100',
+'8600000207',
+'5810001424',
+'5810001042',
+'8600000149',
+'5810001366',
+'5810000839',
+'5810000651',
+'8000000009',
+'5810000133',
+'5810000515',
+'5810000593',
+'5810000075',
+'5810000457',
+'2600000009',
+'5810000800',
+'8600000052',
+'5810000399',
+'2300000007',
+'5930000000',
+'5810000024',
+'5810001139',
+'5810000360',
+'8600000143',
+'5810001275',
+'5810000684',
+'8600000007',
+'8000000003')
+
+UPDATE EKKO 
+SET AEDAT = AEDAT + 572
+WHERE EBELN = '5810000715'
+
+select distinct matnr, werks from vbap where matnr is not null and werks is not null
+
+
+ALTER TABLE EKPO RENAME MATNR TO MATNR_OLD
+ALTER TABLE EKPO RENAME WERKS TO WERKS_OLD
+
+ALTER TABLE EKPO ADD COLUMN MATNR VARCHAR(80)
+ALTER TABLE EKPO ADD COLUMN WERKS VARCHAR(80)
+
+ALTER TABLE VBAP RENAME MATNR TO MATNR_OLD
+ALTER TABLE VBAP RENAME WERKS TO WERKS_OLD
+
+ALTER TABLE VBAP ADD COLUMN MATNR VARCHAR(80)
+ALTER TABLE VBAP ADD COLUMN WERKS VARCHAR(80)
+
+SELECT * FROM COLUMNS WHERE TABLE_NAME = 'EKPO' AND COLUMN_NAME IN ('MATNR_OLD','WERKS_OLD')
+
+
+SELECT VDATU,* FROM VBAK WHERE VBELN = '7000000130'
+
+UPDATE VBAK 
+SET VDATU = VDATU + 396
+WHERE VBELN = '7000000130'
+
+
+select lfdat,* from likp where vbeln in ('80001398')
+ = '80001321'
+
+select vgbel,vbeln,* from lips where vgbel = '7000000054'
+
+SELECT * FROM LIPS WHERE VGBEL in ('7000000130')
+
+UPDATE LIKP 
+SET LFDAT = CAST(LFDAT AS DATE) + 379
+WHERE VBELN in ('80272443')
+
+select lfdat, * from likp where  VBELN = '80001303'
+
+select distinct lips.vgbel,date(lfdat) from likp 
+join lips on likp.vbeln = lips.vbeln
+where vgbel in ('7000000088',
+'7000000050',
+'7000000005',
+'7000000119',
+'7000000018',
+'7000000114',
+'7000000013',
+'7000000121',
+'7000000009',
+'7000000019',
+'7000000004',
+'7000000122',
+'7000000113'
+)
+
+select * from lips where vgbel in ('7000000088',
+'7000000050',
+'7000000005',
+'7000000119',
+'7000000018',
+'7000000114',
+'7000000013',
+'7000000121',
+'7000000009',
+'7000000019',
+'7000000004',
+'7000000122',
+'7000000113'
+)
+
+
+
+
+= '7000000081'
+
+
+
+
+
+
+UPDATE VBAP 
+SET MATNR = "sales_order_material_plant_Sheet1"."MATNR",
+WERKS = "sales_order_material_plant_Sheet1"."WERKS" 
+FROM "sales_order_material_plant_Sheet1"
+WHERE VBAP.VBELN = "sales_order_material_plant_Sheet1"."VBELN"
+
+SELECT COUNT(*) FROM "sales_order_material_plant_Sheet1"
+
+UPDATE EKPO 
+SET MATNR = "sales_order_material_plant_Sheet1"."MATNR",
+WERKS = "sales_order_material_plant_Sheet1"."WERKS" 
+FROM "sales_order_material_plant_Sheet1"
+WHERE EKPO.EBELN = "sales_order_material_plant_Sheet1"."EBELN"
+
+SELECT COUNT(*) FROM EKPO WHERE MATNR IS NOT NULL AND WERKS IS NOT NULL
+
+SELECT UDATE FROM CDHDR 
+JOIN CDPOS 
+
+UPDATE 
+
+
+SELECT * FROM "Vendor_late_deliveries_usecase" 
+
+UPDATE "Vendor_late_deliveries_usecase" 
+SET "SO ID" = REGEXP_REPLACE("SO ID", '^SalesOrder_400', '')
+
+ALTER TABLE "Vendor_late_deliveries_usecase" ADD COLUMN SO_REQUESTED_DATE DATETIME
+
+UPDATE "Vendor_late_deliveries_usecase" 
+SET PO_CREATION_DATE = "SO_CREATION_DATE" + (8 + FLOOR(RANDOM() * 8)); 
+
+
+SELECT 
+"SO CREATION TIME" - INTERVAL '1 year',"SO CREATION TIME","SO CREATION TIME" - 365 FROM "Vendor_late_deliveries_usecase"
+
+WHERE EXTRACT(YEAR FROM "SO CREATION TIME") = '2025'
+
+ALTER TABLE
+
+UPDATE "Vendor_late_deliveries_usecase" 
+SET SO_CREATION_DATE = CURRENT_DATE - FLOOR(RANDOM()*365)
+
+SELECT "SO ID",SO_CREATION_DATE FROM "Vendor_late_deliveries_usecase" ORDER BY SO_CREATION_DATE DESC
+
+UPDATE "Vendor_late_deliveries_usecase"
+SET SO_CREATION_DATE = SO_CREATION_DATE - 60
+WHERE "SO ID" IN ('7000000128','7000000054','7000000027','7000000022','7000000088','7000000114','7000000056','7000000031','7000000023')
+
+ALTER TABLE 
+
+ALTER TABLE "Vendor_late_deliveries_usecase" ADD COLUMN SO_DELIVERY_DATE DATETIME
+
+UPDATE "Vendor_late_deliveries_usecase" 
+SET SO_CREATION_DATE = CURRENT_DATE - FLOOR(RANDOM()*365)
+
+UPDATE "Vendor_late_deliveries_usecase" 
+SET PO_CREATION_DATE = "SO_CREATION_DATE" + (8 + FLOOR(RANDOM() * 8)); 
+
+
+UPDATE "Vendor_late_deliveries_usecase" 
+SET SO_REQUESTED_DATE = "SO_CREATION_DATE" + (1 + FLOOR(RANDOM() * 30)); 
+
+UPDATE "Vendor_late_deliveries_usecase"
+SET PO_REQUESTED_DATE = PO_CREATION_DATE + (1 + FLOOR(RANDOM() * (DATEDIFF('DAY', PO_CREATION_DATE, SO_REQUESTED_DATE) - 1)))
+WHERE DATEDIFF('DAY', PO_CREATION_DATE, SO_REQUESTED_DATE) >= 1;
+
+SELECT *,DATEDIFF('DAY', PO_CREATION_DATE, SO_REQUESTED_DATE) FROM "Vendor_late_deliveries_usecase" ORDER BY "PO ID"
+ORDER BY PO_REQUESTED_DATE
+WHERE PO_REQUESTED_DATE IS NULL
+WHERE DATEDIFF('DAY', PO_CREATION_DATE, SO_REQUESTED_DATE) < 1
+
+UPDATE "Vendor_late_deliveries_usecase"
+SET PO_DELIVERY_DATE = GREATEST(PO_REQUESTED_DATE,SO_REQUESTED_DATE) + (1 + FLOOR(RANDOM() * 30));
+
+UPDATE "Vendor_late_deliveries_usecase" 
+SET SO_DELIVERY_DATE = GREATEST(SO_REQUESTED_DATE,PO_REQUESTED_DATE,PO_DELIVERY_DATE) + (1 + FLOOR(RANDOM() * 30));
+
+SELECT * FROM "Vendor_late_deliveries_usecase" WHERE "SO ID" = '7000000003'
+
+CREATE TABLE DELIVERY_TABLE_VBELN
+AS 
+SELECT VBELN,VGBEL FROM LIPS WHERE VGBEL IN ('7000000003',
+'7000000004',
+'7000000005',
+'7000000009',
+'7000000012',
+'7000000013',
+'7000000018',
+'7000000019',
+'7000000021',
+'7000000131',
+'7000000022',
+'7000000023',
+'7000000027',
+'7000000028',
+'7000000028',
+'7000000030',
+'7000000031',
+'7000000036',
+'7000000037',
+'7000000040',
+'7000000045',
+'7000000050',
+'7000000054',
+'7000000055',
+'7000000056',
+'7000000063',
+'7000000064',
+'7000000128',
+'7000000130',
+'7000000069',
+'7000000072',
+'7000000073',
+'7000000079',
+'7000000081',
+'7000000082',
+'7000000083',
+'7000000087',
+'7000000088',
+'7000000089',
+'7000000090',
+'7000000091',
+'7000000096',
+'7000000109',
+'7000000112',
+'7000000113',
+'7000000114',
+'7000000118',
+'7000000119',
+'7000000122',
+'7000000127',
+'7000000121')
+
+SELECT * FROM "Vendor_late_deliveries_usecase" WHERE "SO ID" = '7000000012'
+
+ALTER TABLE "Vendor_late_deliveries_usecase" ADD COLUMN VBELN VARCHAR
+
+SELECT * FROM LIKP WHERE VBELN = '80001269'
+
+UPDATE "Vendor_late_deliveries_usecase"
+SET VBELN = DELIVERY_TABLE_VBELN.VBELN 
+FROM DELIVERY_TABLE_VBELN
+WHERE "Vendor_late_deliveries_usecase"."SO ID" = DELIVERY_TABLE_VBELN.VGBEL
+
+UPDATE VBAK 
+SET "ERDAT" = "Vendor_late_deliveries_usecase"."SO_CREATION_DATE"
+FROM "Vendor_late_deliveries_usecase"
+WHERE VBAK.VBELN = "Vendor_late_deliveries_usecase"."SO ID"
+
+UPDATE EKKO 
+SET AEDAT = PO_CREATION_DATE
+FROM "Vendor_late_deliveries_usecase"
+WHERE EBELN = "PO ID"
+
+UPDATE VBAK 
+SET VDATU = SO_REQUESTED_DATE 
+FROM "Vendor_late_deliveries_usecase"
+WHERE VBAK.VBELN = "Vendor_late_deliveries_usecase"."SO ID"
+
+SELECT "SO ID","PO ID" FROM "Vendor_late_deliveries_usecase"
+SELECT * FROM "vendor_late_deliveries_values"
+
+SELECT VDATU,* FROM VBAK WHERE VBELN = '7000000003'
+
+UPDATE EKES 
+SET EINDT = PO_REQUESTED_DATE
+FROM "Vendor_late_deliveries_usecase"
+WHERE EBELN = "PO ID"
+
+UPDATE EKET 
+SET EINDT = PO_DELIVERY_DATE
+FROM "Vendor_late_deliveries_usecase"
+WHERE EBELN = "PO ID"
+
+UPDATE LIKP 
+SET LFDAT = SO_DELIVERY_DATE
+FROM "Vendor_late_deliveries_usecase"
+WHERE LIKP.VBELN = "Vendor_late_deliveries_usecase".VBELN
+
+
+SELECT "SO ID","PO ID" FROM "Vendor_late_deliveries_usecase"
+SELECT * FROM "vendor_late_deliveries_values"
+
+UPDATE VBAK 
+SET NETWR = SO_VALUE
+FROM "vendor_late_deliveries_values"
+WHERE VBELN = "SO ID"
+
+UPDATE VBAP 
+SET NETWR = SO_VALUE
+FROM "vendor_late_deliveries_values"
+WHERE VBELN = "SO ID"
+
+UPDATE EKPO 
+SET NETWR = PO_VALUE
+FROM "vendor_late_deliveries_values"
+WHERE EBELN = "PO ID"
+
+
+SELECT "PO ID","PO REQUESTED DELIVERY DATE" FROM "VENDOR_LATE_DELIVERIES_PO_REQUESTED_DATE"
+
+
+UPDATE "VENDOR_LATE_DELIVERIES_PO_REQUESTED_DATE" 
+SET "PO ID" = REGEXP_REPLACE("PO ID", '^PurchaseOrder_400', '')
+
+UPDATE EKES 
+SET EINDT = "PO REQUESTED DELIVERY DATE"
+FROM "VENDOR_LATE_DELIVERIES_PO_REQUESTED_DATE"
+WHERE EBELN = "PO ID"
+
+
+SELECT * FROM EKES WHERE EBELN = '5810000042'
+
+SELECT "EKES"."MANDT","EKES"."EBELN","EKES"."EBELP","EKES"."ETENS","EKES"."ERDAT","EKES"."EZEIT","EKES"."EBTYP","EKES"."EINDT","EKES"."MENGE"
+FROM EKES LIMIT 2
+
+SELECT EBELN,MENGE FROM "EKPO"
+
+SELECT EBELN FROM "EKES_VENDOR_LATE_DELIVERIES"
+
+INSERT INTO EKES 
+(
+  "MANDT","EBELN","EBELP","ETENS","ERDAT","EZEIT","EBTYP","EINDT","MENGE"
+)
+(
+  SELECT
+  MANDT,EBELN,EBELP,ETENS,ERDAT,EZEIT,EBTYP,EINDT,MENGE
+  FROM "EKES_VENDOR_LATE_DELIVERIES"
+)
+
+SELECT MENGE,* FROM EKPO 
+SELECT * FROM EKES 
+UPDATE EKES 
+SET EBELP = '00010'
+WHERE EBELN IN ('2300000007',
+'2600000009',
+'5810000042',
+'5810000048',
+'5810000075',
+'5810000133',
+'5810000184',
+'5810000224',
+'5810000333',
+'5810000360',
+'5810000424',
+'5810000424',
+'5810000457',
+'5810000515',
+'5810000560',
+'5810000684',
+'5810000715',
+'5810000748',
+'5810000793',
+'5810000800',
+'5810000851',
+'5810000884',
+'5810000933',
+'5810001048',
+'5810001100',
+'5810001139',
+'5810001151',
+'5810001184',
+'5810001242',
+'5810001424',
+'5930000000',
+'8600000116',
+'8600000161',
+'8600000207')
+
+UPDATE EKES 
+SET MENGE = EKPO.MENGE
+FROM EKPO
+WHERE EKES.MANDT = EKPO.MANDT 
+AND EKES.EBELN = EKPO.EBELN 
+AND EKES.EBELP = EKPO.EBELP 
+AND EKPO.EBELN IN ('2300000007',
+'2600000009',
+'5810000042',
+'5810000048',
+'5810000075',
+'5810000133',
+'5810000184',
+'5810000224',
+'5810000333',
+'5810000360',
+'5810000424',
+'5810000424',
+'5810000457',
+'5810000515',
+'5810000560',
+'5810000684',
+'5810000715',
+'5810000748',
+'5810000793',
+'5810000800',
+'5810000851',
+'5810000884',
+'5810000933',
+'5810001048',
+'5810001100',
+'5810001139',
+'5810001151',
+'5810001184',
+'5810001242',
+'5810001424',
+'5930000000',
+'8600000116',
+'8600000161',
+'8600000207')
+<%=BUSINESS_GRAPH%>."o_celonis_VendorConfirmation".
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_SalesOrder"
+
+select * from <%=BUSINESS_GRAPH%>."o_celonis_PurchaseOrderScheduleLine"
+
+
+
+select count(*)
+from (
+SELECT DISTINCT 'PORequestedDelivery' || '_' || "PurchaseOrder"."ID" AS "ID",
+       "VendorConfirmation"."ConfirmationDeliveryDate"                  AS "Time",
+       "PurchaseOrder"."ID" AS "PurchaseOrder",
+       "VendorConfirmation"."ID" AS "VendorConfirmation"
+FROM <%=BUSINESS_GRAPH%>."o_celonis_PurchaseOrder" AS "PurchaseOrder"
+inner JOIN <%=BUSINESS_GRAPH%>."o_celonis_VendorConfirmation" AS "VendorConfirmation"
+    ON "VendorConfirmation"."SourceSystemInstance" = "PurchaseOrder"."SourceSystemInstance"
+    AND "VendorConfirmation"."SystemPurchaseOrderNumber" = "PurchaseOrder"."SystemPurchaseOrderNumber"
+WHERE "VendorConfirmation"."ConfirmationDeliveryDate" IS NOT NULL
+
+)
+
+
+select * from vbap where vbeln = '7000000003'
+
+400000011,JKFR
+
+select * from ekpo where matnr = '400000011' and werks = 'JKFR'
+
+select count(*) from ekpo where matnr is not null
+
+select * from ekpo where matnr is null
+
+
+SELECT EBELN FROM EKPO WHERE MATNR ISNULL AND WERKS ISNULL AND LENGTH(EBELN) = '10' and EBELP = '00010'
+GROUP BY EBELN HAVING COUNT(DISTINCT EBELP) = 1
+
+SELECT DISTINCT MATNR,WERKS FROM EKPO
+
+SELECT VBELN FROM VBAP WHERE MATNR ISNULL AND WERKS ISNULL AND LENGTH(VBELN) = '10' and POSNR = '10' AND VBELN > '7000000136'
+GROUP BY VBELN HAVING COUNT(DISTINCT POSNR) = 1  ORDER BY VBELN  
+
+SELECT * FROM VBAP WHERE MATNR ISNULL AND WERKS ISNULL AND LENGTH(VBELN) = '10'
+
